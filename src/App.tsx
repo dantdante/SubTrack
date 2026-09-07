@@ -211,15 +211,23 @@ function AddSubscription({
   const [cycle, setCycle] = useState<Cycle>('monthly');
   const [nextBilling, setNextBilling] = useState('');
   const [notes, setNotes] = useState('');
+  const [submitted, setSubmitted] = useState(false);
 
-  const valid = name.trim() !== '' && cost.trim() !== '' && nextBilling !== '';
+  const parsedCost = Number(cost);
+  const valid =
+    name.trim() !== '' &&
+    cost.trim() !== '' &&
+    Number.isFinite(parsedCost) &&
+    parsedCost >= 0 &&
+    nextBilling !== '';
 
   const submit = () => {
-    if (!valid) return;
+    if (!valid || submitted) return;
+    setSubmitted(true);
     onSave({
       id: crypto.randomUUID(),
       name: name.trim(),
-      cost: Number(cost),
+      cost: parsedCost,
       cycle,
       nextBilling,
       notes: notes.trim() || undefined,
@@ -284,7 +292,7 @@ function AddSubscription({
           />
         </div>
 
-        <button className="btn block" style={delay(5)} onClick={submit} disabled={!valid}>
+        <button className="btn block" style={delay(5)} onClick={submit} disabled={!valid || submitted}>
           save
         </button>
       </div>

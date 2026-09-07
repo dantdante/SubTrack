@@ -103,7 +103,7 @@ h2 {
   background: transparent;
   transition: transform 300ms var(--ease), border-color 300ms var(--ease),
     box-shadow 300ms var(--ease);
-  animation: item-in 320ms var(--ease) both;
+  animation: item-in 320ms var(--ease) backwards;
 }
 
 .card:hover {
@@ -223,7 +223,7 @@ h2 {
   align-items: center;
   gap: 10px;
   z-index: 5;
-  animation: item-in 320ms var(--ease) both;
+  animation: item-in 320ms var(--ease) backwards;
 }
 
 /* forms */
@@ -238,7 +238,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  animation: item-in 320ms var(--ease) both;
+  animation: item-in 320ms var(--ease) backwards;
 }
 
 .field input,
@@ -309,7 +309,7 @@ h2 {
   gap: 24px;
   padding: 18px 2px;
   border-bottom: 1px solid var(--border);
-  animation: item-in 320ms var(--ease) both;
+  animation: item-in 320ms var(--ease) backwards;
 }
 
 .detail-row span:last-child {
